@@ -1,11 +1,11 @@
-from django.conf.urls import patterns, include
+from django.conf.urls import url, include
+from frontend_notification import views
 
-
-urlpatterns = patterns('frontend_notification.views',
+urlpatterns = [
     # User notification for Customer UI
-    (r'^user_notification/', 'notification_list'),
-    (r'^user_notification/', include('notifications.urls')),
-    (r'^notification_del_read/(.+)/$', 'notification_del_read'),
+    url(r'^user_notification/', views.notification_list),
+    url(r'^user_notification/', include('notifications.urls')),
+    url(r'^notification_del_read/(.+)/$', views.notification_del_read),
     # Notification Status (read/unread) for customer UI
-    (r'^update_notification/(\d*)/$', 'update_notification'),
-)
+    url(r'^update_notification/(\d*)/$', views.update_notification),
+]
