@@ -1,8 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.template.context import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from frontend_notification.constants import NOTICE_TYPE
 from frontend_notification.forms import NotificationForm
@@ -139,8 +138,8 @@ def notification_list(request):
         'user_notification_count': user_notification_count,
         'col_name_with_order': pag_vars['col_name_with_order'],
     }
-    return render_to_response(
-        'frontend/frontend_notification/user_notification.html', data, context_instance=RequestContext(request))
+    return render(
+        'frontend/frontend_notification/user_notification.html', data)
 
 
 @login_required
