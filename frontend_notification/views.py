@@ -138,7 +138,7 @@ def notification_list(request):
         'user_notification_count': user_notification_count,
         'col_name_with_order': pag_vars['col_name_with_order'],
     }
-    return render(
+    return render(request,
         'frontend/frontend_notification/user_notification.html', data)
 
 
